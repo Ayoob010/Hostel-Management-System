@@ -1,0 +1,95 @@
+{% extends 'Admin/common.html' %}
+{% load static %}
+{% block header %}
+
+<style>
+    #btn{
+        position: relative;
+        font-family: "Outfit", sans-serif;
+        font-size: 15px;
+        color: rgb(32, 79, 94);
+        padding: 10px;
+        margin-right: 10px;
+        height: 60px;
+        width: 100%;
+        border: solid 1px rgb(213, 241, 241);
+        text-decoration: none;
+        border-radius: 10px;
+
+    }
+    #btn:hover{
+        background-color: rgb(15, 176, 101);
+        color: aliceblue;
+        border-radius: 10px;
+        border: solid 1px rgb(15, 176, 101);
+
+        
+    }
+    #btn1{
+        position: relative;
+        font-family: "Outfit", sans-serif;
+        font-size: 15px;
+        color: rgb(32, 79, 94);
+        padding: 10px;
+        margin-right: 10px;
+        height: 60px;
+        width: 100%;
+        border: solid 1px rgb(213, 241, 241);
+        text-decoration: none;
+        border-radius: 10px;
+
+    }
+    #btn1:hover{
+        background-color: rgb(176, 31, 15);
+        color: aliceblue;
+        border-radius: 10px;
+        background-color: rgb(176, 31, 15);
+
+        
+    }
+</style>
+
+<div class="mil-info">
+    <img src="img/shapes/4.png" class="mil-shape mil-fade-up" style="width: 110%; bottom: 15%; left: -30%; opacity: .2"
+        alt="shape">
+    <img src="img/shapes/4.png" class="mil-shape mil-fade-up"
+        style="width: 85%; bottom: -25%; right: -30%; transform: rotate(-30deg) scaleX(-1);" alt="shape">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-xl-12">
+
+                <!-- features -->
+                <div class="row mil-mb-60-adapt">
+
+                    <div class="row mil-mb-60-adapt">
+                        <div class="col-12">
+                            <h2 class="mil-fade-up mil-mb-40" style="text-align: center;">VIEW STUDENTS</h2>
+                        </div>
+                        {% for i in users %}
+                        <div class="col-xl-6">
+                            <div class="mil-iconbox mil-mb-40-adapt mil-fade-up">
+                                <div class="mil-bg-icon"></div>
+                                <div class="mil-icon mil-icon-fix">
+                                    <img src="/static/media/{{i.image}}" alt="" >
+                                </div>
+                                <div class="d" style="position: relative;left: 50px;">
+                                <center><h3 class="" style="position: relative;top:-60px;">{{i.name}}</h3><br>
+                                    <p style="position: relative;top:-60px;">Email : {{i.email}} <br>
+                                    Contact : {{i.phone}} <br>
+                                    Address : {{i.address}} <br><br>
+                                    <!-- <a href="/delete_user?uid={{i.loginid_id}}" id="btn1">Delete User </a> -->
+                                </p></center>
+                            </div>
+                            </div>
+
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

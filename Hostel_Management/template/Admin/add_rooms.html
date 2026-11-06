@@ -1,0 +1,162 @@
+{% extends 'Admin/common.html' %}
+{% load static %}
+{% block header %}
+
+<style>
+    #dayOfWeek {
+        position: relative;
+        font-family: "Outfit", sans-serif;
+        font-size: 15px;
+        color: rgb(32, 79, 94);
+        padding: 0 20px;
+        height: 60px;
+        width: 100%;
+        border: solid 1px rgb(213, 241, 241);
+        border-radius: 5px;
+        background-color: rgb(234, 251, 251);
+    }
+</style>
+
+<div class="mil-content-pad mil-p-100-100">
+    <div class="container">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <center>
+                <h2><b>Add Rooms Details</b></h2>
+            </center><br><br>
+            <div class="row">
+                <!-- <div class="col-xl-6">
+                    <div class="mil-field-frame mil-mb-20">
+                        <label>Block name</label>
+                        
+                        <input type="text" placeholder="Enter your name" value="{{block.name}}" required name="name">
+                        
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-user">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                </div> -->
+                <div class="col-xl-12">
+                    <div class="mil-field-frame mil-mb-20">
+                        <label>Room No</label>
+                        <input type="numer" placeholder="Enter Room No" required name="room_no">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-hash">
+                            <line x1="4" y1="9" x2="20" y2="9"></line>
+                            <line x1="4" y1="15" x2="20" y2="15"></line>
+                            <line x1="10" y1="3" x2="8" y2="21"></line>
+                            <line x1="16" y1="3" x2="14" y2="21"></line>
+                        </svg>
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="mil-field-frame mil-mb-20">
+                        <label>Room Image</label>
+                        <input type="file" placeholder="Enter your email" name="images" multiple>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-paperclip">
+                            <path
+                                d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48">
+                            </path>
+                        </svg>
+
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="mil-field-frame mil-mb-20">
+                        <label>No fo Adults</label>
+                        <input type="number" max="4" placeholder="No of Adults" required name="adults">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-tag">
+                            <path
+                                d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0l-8.5-8.5a2 2 0 0 1 0-2.83L9 2.59a2 2 0 0 1 2.83 0l8.5 8.5a2 2 0 0 1 .26 2.82z">
+                            </path>
+                            <line x1="16" y1="8" x2="16.01" y2="8"></line>
+                        </svg>
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="mil-field-frame mil-mb-20">
+                        <label>Room Size</label>
+                        <input type="text" max="4" placeholder="Enter Room Size" required name="size">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-tag">
+                            <path
+                                d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0l-8.5-8.5a2 2 0 0 1 0-2.83L9 2.59a2 2 0 0 1 2.83 0l8.5 8.5a2 2 0 0 1 .26 2.82z">
+                            </path>
+                            <line x1="16" y1="8" x2="16.01" y2="8"></line>
+                        </svg>
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="mil-field-frame mil-mb-20">
+                        <label>Price / Day</label>
+                        <input type="test" max="4" placeholder="Enter Price" required name="price">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-tag">
+                            <path
+                                d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0l-8.5-8.5a2 2 0 0 1 0-2.83L9 2.59a2 2 0 0 1 2.83 0l8.5 8.5a2 2 0 0 1 .26 2.82z">
+                            </path>
+                            <line x1="16" y1="8" x2="16.01" y2="8"></line>
+                        </svg>
+                    </div>
+                </div>
+                <div class="col-xl-12">
+                    <div class="mil-field-frame mil-mb-20">
+                        <label>Select Room Type</label>
+                        <select name="rent_type" id="dayOfWeek">
+                            <option value="Daily Rent">Daily Rent</option>
+                            <option value="Monthly Rent">Monthly Rent</option>
+                        </select>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-tag">
+                            <path
+                                d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0l-8.5-8.5a2 2 0 0 1 0-2.83L9 2.59a2 2 0 0 1 2.83 0l8.5 8.5a2 2 0 0 1 .26 2.82z">
+                            </path>
+                            <line x1="16" y1="8" x2="16.01" y2="8"></line>
+                        </svg>
+
+                    </div>
+                </div>
+
+                <div class="col-xl-12">
+                    <div class="mil-field-frame mil-mb-20">
+                        <label>Add Features</label>
+                        <input type="text" placeholder="Enter Features in Hostel" required name="description">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-info">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <p class="mil-fade-up"><span class="mil-accent-2">*</span>We promise not to disclose your personal
+                        information to third parties.</p>
+                </div>
+                <div class="col-lg-5">
+                    <div class="mil-desctop-right mil-fade-up">
+                        <button type="submit" class="mil-button" style="margin-right: 590px;">
+                            <span>Send</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

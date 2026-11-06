@@ -1,0 +1,146 @@
+{% extends 'Parent/common.html' %}
+{% load static %}
+{% block header %}
+
+<style>
+    #table {
+        width: 100%;
+        text-align: center;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 10px;
+        border: 1px solid rgb(196, 196, 196);
+    }
+
+    th {
+        background-color: #343a40 !important;
+        color: white !important;
+    }
+
+    tbody tr:hover {
+        background-color: #f8f9fa;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .status-approved {
+        background-color: #28a745;
+        color: white;
+        padding: 6px 12px;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+    .status-pending {
+        background-color: #ffc107;
+        color: black;
+        padding: 6px 12px;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+    .status-declined {
+        background-color: #dc3545;
+        color: white;
+        padding: 6px 12px;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+    .btn-pay {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    .btn-pay:hover {
+        background-color: #0056b3;
+        color: white;
+    }
+
+    .paid-badge {
+        background-color: #28a745;
+        color: white;
+        padding: 6px 12px;
+        border-radius: 5px;
+    }
+
+    .unpaid-badge {
+        background-color: #dc3545;
+        color: white;
+        padding: 6px 12px;
+        border-radius: 5px;
+    }
+
+    .remaining-badge {
+        background-color: #ffc107;
+        color: black;
+        padding: 6px 12px;
+        border-radius: 5px;
+    }
+
+    .btn-disabled {
+        background-color: #6c757d;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: not-allowed;
+    }
+</style>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<div class="mil-content-pad mil-p-100-100">
+    <div class="container">
+        <center><h2 class="mb-4">My Fee Structure</h2></center>
+
+        <div class="table-responsive">
+            <table id="table" class="table table-hover table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th colspan="10">Fee Structure</th>
+                    </tr>
+                    <tr>
+                        <th>Student name</th>
+                        <th>Rent Fee</th>
+                        <th>Additional Fee</th>
+                        <th>Total Amount</th>
+                        <th>Paid Amount</th>
+                        <th>Remaining Balance</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in fee %}
+                    <tr>
+                        <td>{{ i.uid.name }}</td>
+                        <td>{{ i.Rentfee }}₹</td>
+                        <td>{{ i.addt_fee }}₹</td>
+                        <td>{{ i.total }}₹</td>
+                        <td>{{ i.Amount|default:"0" }}₹</td>
+                        <td>{{ i.rem_amt|default:"0" }}₹</td>
+                        <td style="color: crimson;">{{ i.pay_status }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="9" class="text-center text-danger">No Fees found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

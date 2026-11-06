@@ -1,0 +1,84 @@
+{% extends 'Admin/common.html' %}
+
+{% load static %}
+{% block header %}
+
+<div class="mil-content-pad mil-p-100-100">
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            <center>
+                <h2><b>Assign Student to Room</b></h2>
+            </center><br><br>
+            <div class="row">
+                <!-- Select Room -->
+                <div class="col-xl-6">
+                    <div class="mil-field-frame mil-mb-20">
+                        <label>Select Room</label>
+                        <select name="room" id="room" class="feather feather-user"required>
+                            <option value="">-- Select Room --</option>
+                            {% for room in rooms %}
+                            <option value="{{ room.id }}">{{ room.name }} - {{ room.room_no }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Select Student -->
+                <div class="col-xl-6">
+                    <div class="mil-field-frame mil-mb-20">
+                        <label>Select Student</label>
+                        <select name="student" id="student" required>
+                            <option value="">-- Select Student --</option>
+                            {% for student in students %}
+                            <option value="{{ student.id }}">{{ student.name }} - {{ student.email }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-12 text-center">
+                    <button type="submit" class="mil-button">
+                        <span>Assign Student</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Assigned Room Members Table -->
+<div class="mil-content-pad mil-p-50-50">
+    <div class="container">
+        <h3 class="text-center">Assigned Room Members</h3>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Room Name</th>
+                        <th>Room No</th>
+                        <th>Student Name</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for member in room_members %}
+                    <tr>
+                        <td>{{ member.room.name }}</td>
+                        <td>{{ member.room.room_no }}</td>
+                        <td>{{ member.student.name }}</td>
+                        <td>{{ member.student.email }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4" class="text-center">No students assigned yet.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

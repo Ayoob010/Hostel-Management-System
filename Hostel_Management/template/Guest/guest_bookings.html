@@ -1,0 +1,70 @@
+{% extends 'Guest/common.html' %}
+{% load static %}
+{% block header %}
+
+<style>
+    #table {
+        text-align: center !important;
+        vertical-align: middle;
+    }
+</style>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+<div class="mil-content-pad mil-p-100-100">
+    <div class="container">
+        <table class="table table-bordered" id="table">
+            <thead>
+                <tr>
+                    <th colspan="11" style="background-color: rgb(213, 213, 213);">Booking Details</th>
+                </tr>
+                <tr>
+                    <th scope="col">Booking Id</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Room No</th>
+                    <th scope="col">Block</th>
+                    <th scope="col">Check In</th>
+                    <th scope="col">Check-out</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Status</th>
+                    <th scope="col" colspan="2">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in bookings %}
+                <tr>
+                    <th scope="row">{{i.id}}</th>
+                    <td><img src="/static/media/{{i.gid.image}}" alt="" width="100px"></td>
+                    <td>{{i.gid.name}}</td>
+                    <td>{{i.rid.room_no}}</td>
+                    <td>{{i.rid.block.name}}</td>
+                    <td>{{i.check_in}}</td>
+                    <td>{{i.check_out}}</td>
+                    <td>Rs.{{i.amount}}</td>
+                    <td>{{i.status}}</td>
+
+                    {% if i.status == "approved" %}
+                    <td>
+                        <a class="btn btn-outline-success">Approved</a>
+                    </td>
+                    {% elif i.status == "Booked" %}
+                    <td>
+                        <a class="btn btn-outline-success">Booked</a>
+                    </td>
+                    {% else %}
+                    <td>
+                        <a class="btn btn-outline-danger">Declined</a>
+                    </td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends 'Admin/common.html' %}
+{% load static %}
+{% block header %}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+<style>
+    .table,
+    tr,
+    th,
+    td {
+        border: 1px solid rgb(200, 200, 200);
+        text-align: center;
+        height: 40px;
+    }
+
+    table {
+        width: 600px;
+    }
+</style>
+
+<div class="mil-content-pad mil-p-100-100">
+    <div class="container">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <center>
+                <h2><b>Add Fees Details </b></h2>
+            </center><br><br>
+            <div class="row">
+                
+                <div class="col-xl-12">
+                    <div class="mil-field-frame mil-mb-20">
+                        <label>Fees name</label>
+
+                        <input type="text" placeholder="Fees name" value="{{view.desc}}" required name="name">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-user">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                </div>
+                <div class="col-xl-12">
+                    <div class="mil-field-frame mil-mb-20">
+                        <label>Price</label>
+                        <input type="text" placeholder="Enter Price" value="" required name="price">
+
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <p class="mil-fade-up"><span class="mil-accent-2">*</span>We promise not to disclose your personal
+                        information to third parties.</p>
+                </div>
+                <div class="col-lg-5">
+                    <div class="mil-desctop-right mil-fade-up">
+                        <button type="submit" class="mil-button" style="margin-right: 500px;">
+                            <span>Add Now</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <br><br>
+        <table class="table table-bordered" align="center" cellpadding="10" cellspacing="10">
+            <tr>
+                <th>Fees Name</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+            {% if view %}
+            {% for i in view %}
+            <tr>
+                <td>{{i.desc}}</td>
+                <td>{{i.price}}</td>
+                <td><a href="/modify_fees?fid={{i.id}}&status=update" class="btn btn-outline-success">Update</a>
+                    <a href="/modify_fees?fid={{i.id}}&status=delete" class="btn btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+                <td colspan="3">No Data Found</td>
+            </tr>
+            {% endif %}
+        </table>
+    </div>
+</div>
+
+{% endblock %}

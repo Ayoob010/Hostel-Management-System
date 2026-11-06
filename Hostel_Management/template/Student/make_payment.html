@@ -1,0 +1,11 @@
+{% extends 'Student/common.html' %}
+{% load static %}
+{% block header %}
+<h2>Payment Required</h2>
+<p>You have not made your payment for this month.</p>
+<form method="post" >
+    {% csrf_token %}
+    <input type="hidden" name="user_id" value="{{ user.id }}">
+    <button type="submit" class="btn btn-primary">Make Payment</button>
+</form>
+{% endblock %}

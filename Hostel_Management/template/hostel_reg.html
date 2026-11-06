@@ -1,0 +1,103 @@
+{% extends 'common.html' %}
+{% load static %}
+{% block header %}
+
+<div class="mil-content-pad mil-p-100-100">
+    <div class="container">
+        <form method="post"  enctype="multipart/form-data">
+            {% csrf_token %}
+            <center>
+                <h2><b>Guest Registration</b></h2>
+            </center><br><br>
+            <div class="row">
+                <div class="col-xl-6">
+                    <div class="mil-field-frame mil-mb-20">
+                        <label>Name</label>
+                        <input type="text" placeholder="Enter your name" required name="name">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-user">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="mil-field-frame mil-mb-20">
+                        <label>Email</label>
+                        <input type="email" placeholder="Enter your email" required name="email">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-mail">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </div>
+                </div>
+                <div class="col-xl-12">
+                    <div class="mil-field-frame mil-mb-20">
+                        <label>Profile Image</label>
+                        <input type="file" placeholder="Enter your email" name="image">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-paperclip">
+                            <path
+                                d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48">
+                            </path>
+                        </svg>
+
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="mil-field-frame mil-mb-20">
+                        <label>Mobile No</label>
+                        <input type="text" placeholder="Enter Mobile No" required name="phone" pattern="[6789][0-9]{9}" maxlength="10" minlength="10">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-phone">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.91.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16.018 16.018 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="mil-field-frame mil-mb-20">
+                        <label>Password</label>
+                        <input type="text" placeholder="Enter Password" name="password" required
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                            title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-lock">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="col-xl-12">
+                    <div class="mil-field-frame mil-mb-20">
+                        <label>Address</label>
+                        <textarea placeholder="Enter Your Address" required name="address"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <p class="mil-fade-up"><span class="mil-accent-2">*</span>We promise not to disclose your personal
+                        information to third parties.</p>
+                </div>
+                <div class="col-lg-5">
+                    <div class="mil-desctop-right mil-fade-up">
+                        <button type="submit" class="mil-button">
+                            <span>Send</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

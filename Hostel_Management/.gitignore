@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual Environment
+myenv/
+venv/
+
+# Django
+
+# VS Code
+.vscode/
+
+# Static files generated during deployment
+staticfiles/
+
+# Build files
+.dist/

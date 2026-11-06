@@ -1,0 +1,113 @@
+{% extends 'Admin/common.html' %}
+{% load static %}
+{% block header %}
+
+<style>
+    #dayOfWeek {
+        position: relative;
+        font-family: "Outfit", sans-serif;
+        font-size: 15px;
+        color: rgb(32, 79, 94);
+        padding: 0 20px;
+        height: 60px;
+        width: 100%;
+        border: solid 1px rgb(213, 241, 241);
+        border-radius: 5px;
+        background-color: rgb(234, 251, 251);
+    }
+</style>
+
+<div class="mil-content-pad mil-p-100-100">
+    <div class="container">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <center>
+                <h2><b>Update Mess Details</b></h2>
+            </center><br><br>
+            <div class="row">
+                <div class="col-xl-6">
+                    <div class="mil-field-frame mil-mb-20">
+                        <label>Select Day</label>
+                        <select name="day" id="dayOfWeek">
+                            <option value="Sunday">Sunday</option>
+                            <option value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednesday">Wednesday</option>
+                            <option value="Thursday">Thursday</option>
+                            <option value="Friday">Friday</option>
+                            <option value="Saturday">Saturday</option>
+                        </select>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-tag">
+                            <path
+                                d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0l-8.5-8.5a2 2 0 0 1 0-2.83L9 2.59a2 2 0 0 1 2.83 0l8.5 8.5a2 2 0 0 1 .26 2.82z">
+                            </path>
+                            <line x1="16" y1="8" x2="16.01" y2="8"></line>
+                        </svg>
+
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="mil-field-frame mil-mb-20">
+                        <label>Breakfast</label>
+                        <input type="text" max="4" value="{{view.breakfast}}" placeholder="BreakFast" required name="BreakFast">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-tag">
+                            <path
+                                d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0l-8.5-8.5a2 2 0 0 1 0-2.83L9 2.59a2 2 0 0 1 2.83 0l8.5 8.5a2 2 0 0 1 .26 2.82z">
+                            </path>
+                            <line x1="16" y1="8" x2="16.01" y2="8"></line>
+                        </svg>
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="mil-field-frame mil-mb-20">
+                        <label>Lunch</label>
+                        <input type="text" max="4" placeholder="Lunch" value="{{view.lunch}}" required name="Lunch">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-tag">
+                            <path
+                                d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0l-8.5-8.5a2 2 0 0 1 0-2.83L9 2.59a2 2 0 0 1 2.83 0l8.5 8.5a2 2 0 0 1 .26 2.82z">
+                            </path>
+                            <line x1="16" y1="8" x2="16.01" y2="8"></line>
+                        </svg>
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="mil-field-frame mil-mb-20">
+                        <label>Dinner</label>
+                        <input type="test" max="4" placeholder="Dinner" required value="{{view.dinner}}" name="Dinner">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-tag">
+                            <path
+                                d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0l-8.5-8.5a2 2 0 0 1 0-2.83L9 2.59a2 2 0 0 1 2.83 0l8.5 8.5a2 2 0 0 1 .26 2.82z">
+                            </path>
+                            <line x1="16" y1="8" x2="16.01" y2="8"></line>
+                        </svg>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <p class="mil-fade-up"><span class="mil-accent-2">*</span>We promise not to disclose your personal
+                        information to third parties.</p>
+                </div>
+                <div class="col-lg-5">
+                    <div class="mil-desctop-right mil-fade-up">
+                        <button type="submit" class="mil-button" style="margin-right: 580px;">
+                            <span>Update</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
